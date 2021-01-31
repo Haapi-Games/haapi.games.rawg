@@ -14,20 +14,23 @@ from haapi.games.rawg.objects import Game
 
 mock_api_key = "foo"
 jotun_description_raw = (
-    "The graphics solution of the game may seem simple at first glance, but in fact, it is "
-    "very addictive and elaborated with the exceptional talent of the artist. Reminds the "
-    "best samples from the history of world animation. There is an impression that the "
-    "directors and operators of the highest Hollywood level worked on all the scenes in the "
-    "game - the hero's simple passage through the hanging ladder suddenly turns into an "
-    "exciting panorama that you want to admire for a long time. Voices speaking the ancient "
-    "Scandinavian languages, and beautiful original music help to create a tangible atmosphere "
-    "of Nordic folklore and adventure. These advantages draw attention to the game, "
-    "despite the lack of continuous action. There is no such action in the game, "
-    "but when it does happen, its epic nature is suited to the world of Nordic fairy tales. "
-    "Plots of these tales and a description of the world of Nordic myths are adequately "
-    "represented in the game, it is even possible to study this topic. The gameplay consists"
-    " of exploring large levels, searching for runes to enter the next level, avoiding"
-    " various exotic troubles and rare but epic and picturesque battles."
+    "The graphics solution of the game may seem simple at first glance, but"
+    " in fact, it is very addictive and elaborated with the exceptional talent "
+    "of the artist. Reminds the best samples from the history of world "
+    "animation. There is an impression that the directors and operators of "
+    "the highest Hollywood level worked on all the scenes in the game - "
+    "the hero's simple passage through the hanging ladder suddenly turns into an "
+    "exciting panorama that you want to admire for a long time. Voices speaking "
+    "the ancient Scandinavian languages, and beautiful original music help to "
+    "create a tangible atmosphere of Nordic folklore and adventure. These "
+    "advantages draw attention to the game, despite the lack of continuous "
+    "action. There is no such action in the game, but when it does happen, "
+    "its epic nature is suited to the world of Nordic fairy tales. Plots of "
+    "these tales and a description of the world of Nordic myths are adequately "
+    "represented in the game, it is even possible to study this topic. "
+    "The gameplay consists of exploring large levels, searching for runes to "
+    "enter the next level, avoiding various exotic troubles and rare but "
+    "epic and picturesque battles."
 )
 
 
@@ -57,8 +60,8 @@ async def test_get_game(shared_datadir: pathlib.Path) -> None:
         assert foo.released.month == 9
         assert foo.released.day == 29
         assert (
-            foo.background_image
-            == "https://media.rawg.io/media/games/032/0329db96e252aa41e672da2ba16f914c.jpg"
+            foo.background_image == "https://media.rawg.io/media/games/"
+            "032/0329db96e252aa41e672da2ba16f914c.jpg"
         )
         assert foo.description_raw == jotun_description_raw
 
@@ -94,7 +97,7 @@ async def test_get_game(shared_datadir: pathlib.Path) -> None:
 
 @pytest.mark.asyncio
 async def test_search_games(shared_datadir: pathlib.Path) -> None:
-    """JSON search returns proper List[haapi.games.rawg.objects.game]
+    """JSON search returns proper List[haapi.games.rawg.objects.game].
 
     Args:
         shared_datadir: tests/data
@@ -108,7 +111,8 @@ async def test_search_games(shared_datadir: pathlib.Path) -> None:
         ) as read_file:
             payload = json.load(read_file)
         mock_response.get(
-            f"https://api.rawg.io/api/games?key={mock_api_key}&search={game_search.replace(' ', '+')}"
+            f"https://api.rawg.io/api/games?key={mock_api_key}&"
+            f"search={game_search.replace(' ', '+')}"
             f"&search_precise=True",
             payload=payload,
         )
@@ -131,8 +135,8 @@ async def test_search_games(shared_datadir: pathlib.Path) -> None:
         assert best_game.metacritic is None
         assert best_game.esrb_rating is None
         assert (
-            best_game.background_image
-            == "https://media.rawg.io/media/screenshots/842/842ab43c709d2acb95691c927de9cb93.jpg"
+            best_game.background_image == "https://media.rawg.io/media/screenshots/"
+            "842/842ab43c709d2acb95691c927de9cb93.jpg"
         )
         assert best_game.description_raw is None  # search does not return a description
         assert len(best_game.genres) == 3
