@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "haapi.games.rawg"
-version = "0.1.0"
+version = "0.2.0"
 description = "Haapi Games Rawg"
 authors = ["Haapi <haapigeek@gmail.com>"]
 license = "MIT"

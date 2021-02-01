@@ -33,18 +33,6 @@ Haapi Games Rawg
    :alt: Black
 
 
-Features
---------
-
-* TODO
-
-
-Requirements
-------------
-
-* TODO
-
-
 Installation
 ------------
 
